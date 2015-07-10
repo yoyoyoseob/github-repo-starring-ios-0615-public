@@ -13,17 +13,21 @@
 -(BOOL)isEqual:(id)object
 {
     FISGithubRepository *repo2 = (FISGithubRepository *)object;
+    
     NSString *urlA = [self.htmlURL absoluteString];
     NSString *urlB = [repo2.htmlURL absoluteString];
+    
     return [repo2.repositoryID isEqualToString:self.repositoryID] && [repo2.fullName isEqualToString:repo2.fullName] && [urlA isEqualToString:urlB];
 }
 
 +(FISGithubRepository *)repoFromDictionary:(NSDictionary *)repoDictionary
 {
     FISGithubRepository *repo = [[FISGithubRepository alloc] init];
+    
     repo.repositoryID = [repoDictionary[@"id"] stringValue];
-    repo.fullName=repoDictionary[@"full_name"];
-    repo.htmlURL=[NSURL URLWithString:repoDictionary[@"html_url"]];
+    repo.fullName = repoDictionary[@"full_name"];
+    repo.htmlURL = [NSURL URLWithString:repoDictionary[@"html_url"]];
+    
     return repo;
 }
 @end

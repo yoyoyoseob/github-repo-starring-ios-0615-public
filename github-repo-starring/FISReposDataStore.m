@@ -24,17 +24,21 @@
 - (instancetype)init
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _repositories=[NSMutableArray new];
     }
     return self;
 }
 -(void)getRepositoriesWithCompletion:(void (^)(BOOL))completionBlock
 {
-    [FISGithubAPIClient getRepositoriesWithCompletion:^(NSArray *repoDictionaries) {
-        for (NSDictionary *repoDictionary in repoDictionaries) {
+    [FISGithubAPIClient getRepositoriesWithCompletion:^(NSArray *repoDictionaries)
+    {
+        for (NSDictionary *repoDictionary in repoDictionaries)
+        {
             [self.repositories addObject:[FISGithubRepository repoFromDictionary:repoDictionary]];
         }
+        
         completionBlock(YES);
     }];
 }
